@@ -1,0 +1,78 @@
+#ifndef SCS_IDL
+#define SCS_IDL
+
+
+module scs {
+	module core {
+		exception StartupFailed {};
+		exception ShutdownFailed {};
+		exception InvalidName {
+		  string name;
+		};
+		exception InvalidConnection {};
+		exception AlreadyConnected {};
+		exception ExceededConnectionLimit {};
+		exception NoConnection {};
+		
+		
+		typedef unsigned long ConnectionId;
+		typedef sequence<string> NameList;
+		
+		struct FacetDescription {
+		  string name;
+		  string interface_name;
+		  Object facet_ref;
+		};
+		typedef sequence<FacetDescription> FacetDescriptions;
+		
+		struct ConnectionDescription {
+		  ConnectionId id;
+		  Object objref;
+		};
+		typedef sequence<ConnectionDescription> ConnectionDescriptions;
+		
+		struct ReceptacleDescription {
+		  string name;
+		  string interface_name;
+		  boolean is_multiplex;
+		  ConnectionDescriptions connections;
+		};
+		typedef sequence<ReceptacleDescription> ReceptacleDescriptions;
+		
+		struct ComponentId {
+			string name;
+			unsigned long version;
+		};
+		typedef sequence<ComponentId> ComponentIdSeq;
+
+		interface IComponent {
+		  void startup() raises (StartupFailed);
+		  void shutdown() raises (ShutdownFailed);
+		
+		  Object getFacet (in string facet_interface);
+		  Object getFacetByName (in string facet);
+		  ComponentId getComponentId ();
+		};
+		
+		interface IReceptacles {
+		  ConnectionId connect (in string receptacle, in Object obj)
+		     raises (InvalidName, InvalidConnection, AlreadyConnected,
+		             ExceededConnectionLimit);
+		  void disconnect (in ConnectionId id)
+		     raises (InvalidConnection, NoConnection);
+		  ConnectionDescriptions getConnections (in string receptacle)
+		     raises (InvalidName);
+		};
+		
+		interface IMetaInterface {
+		  FacetDescriptions getFacets();
+		  FacetDescriptions getFacetsByName(in NameList names)
+		     raises (InvalidName);
+		  ReceptacleDescriptions getReceptacles();
+		  ReceptacleDescriptions getReceptaclesByName(in NameList names)
+		     raises (InvalidName);
+		};
+	};	
+};
+
+#endif

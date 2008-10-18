@@ -1,0 +1,5 @@
+Main-Class: scs.container.servant.ContainerApp
+Class-Path: ./core.jar ./executionNode.jar
+
+
+

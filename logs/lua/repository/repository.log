@@ -1,0 +1,378 @@
+
+-----------------------------------------------------
+Mon Sep 29 19:01:45 2008 1222725705
+SCS::Utils::ReadProperties : Line: initfile = ComponentRepositoryInit.lua
+SCS::Utils::ReadProperties : Line: use_openbus = true
+SCS::Utils::ReadProperties : Line: accessControlServerHostName = localhost
+SCS::Utils::ReadProperties : Line: accessControlServerHostPort = 2089
+SCS::Utils::ReadProperties : Line: privateKeyFile = /home/user/mestrado/svn/openbus/trunk/certificates/ComponentRepository.key
+SCS::Utils::ReadProperties : Line: accessControlServiceCertificateFile = /home/user/mestrado/svn/openbus/trunk/certificates/AccessControlService.crt
+ComponentRepository::IComponent::Startup
+ComponentRepository::IComponent::Startup : Executing init file ComponentRepositoryInit.lua...
+ComponentRepository::IComponent::Startup : Finished.
+ComponentRepository::ComponentRepository::Install
+ComponentRepository::ComponentRepository::Install : Component PingPong1 installed.
+ComponentRepository::ComponentRepository::Install : Finished.
+ComponentRepository::ComponentRepository::GetComponentFile
+ComponentRepository::ComponentRepository::GetComponentFile : Component provided. Finished.
+ComponentRepository::ComponentRepository::GetComponentDescription
+ComponentRepository::ComponentRepository::GetComponentDescription : Description provided. Finished.
+ComponentRepository::ComponentHelp::GetHelpInfo
+ComponentRepository::ComponentHelp::GetHelpInfo : Finished.
+
+-----------------------------------------------------
+Tue Sep 30 11:40:49 2008 1222785649
+SCS::Utils::ReadProperties : Line: initfile = ComponentRepositoryInit.lua
+SCS::Utils::ReadProperties : Line: use_openbus = true
+SCS::Utils::ReadProperties : Line: accessControlServerHostName = localhost
+SCS::Utils::ReadProperties : Line: accessControlServerHostPort = 2089
+SCS::Utils::ReadProperties : Line: privateKeyFile = /home/user/mestrado/svn/openbus/trunk/certificates/ComponentRepository.key
+SCS::Utils::ReadProperties : Line: accessControlServiceCertificateFile = /home/user/mestrado/svn/openbus/trunk/certificates/AccessControlService.crt
+ComponentRepository::IComponent::Startup
+ComponentRepository::IComponent::Startup : Executing init file ComponentRepositoryInit.lua...
+ComponentRepository::IComponent::Startup : Finished.
+ComponentRepository::ComponentRepository::Install
+ComponentRepository::ComponentRepository::Install : Component PingPong1 installed.
+ComponentRepository::ComponentRepository::Install : Finished.
+ComponentRepository::ComponentRepository::GetComponentFile
+ComponentRepository::ComponentRepository::GetComponentFile : Component provided. Finished.
+ComponentRepository::ComponentRepository::GetComponentDescription
+ComponentRepository::ComponentRepository::GetComponentDescription : Description provided. Finished.
+ComponentRepository::ComponentHelp::GetHelpInfo
+ComponentRepository::ComponentHelp::GetHelpInfo : Finished.
+
+-----------------------------------------------------
+Tue Sep 30 11:44:53 2008 1222785893
+SCS::Utils::ReadProperties : Line: initfile = ComponentRepositoryInit.lua
+SCS::Utils::ReadProperties : Line: use_openbus = true
+SCS::Utils::ReadProperties : Line: accessControlServerHostName = localhost
+SCS::Utils::ReadProperties : Line: accessControlServerHostPort = 2089
+SCS::Utils::ReadProperties : Line: privateKeyFile = /home/user/mestrado/svn/openbus/trunk/certificates/ComponentRepository.key
+SCS::Utils::ReadProperties : Line: accessControlServiceCertificateFile = /home/user/mestrado/svn/openbus/trunk/certificates/AccessControlService.crt
+ComponentRepository::IComponent::Startup
+ComponentRepository::IComponent::Startup : Executing init file ComponentRepositoryInit.lua...
+ComponentRepository::IComponent::Startup : Finished.
+ComponentRepository::ComponentRepository::Install
+ComponentRepository::ComponentRepository::Install : Component PingPong1 installed.
+ComponentRepository::ComponentRepository::Install : Finished.
+ComponentRepository::ComponentRepository::GetComponentFile
+ComponentRepository::ComponentRepository::GetComponentFile : Component provided. Finished.
+ComponentRepository::ComponentRepository::GetComponentDescription
+ComponentRepository::ComponentRepository::GetComponentDescription : Description provided. Finished.
+ComponentRepository::ComponentHelp::GetHelpInfo
+ComponentRepository::ComponentHelp::GetHelpInfo : Finished.
+
+-----------------------------------------------------
+Tue Sep 30 11:46:44 2008 1222786004
+SCS::Utils::ReadProperties : Line: initfile = ComponentRepositoryInit.lua
+SCS::Utils::ReadProperties : Line: use_openbus = true
+SCS::Utils::ReadProperties : Line: accessControlServerHostName = localhost
+SCS::Utils::ReadProperties : Line: accessControlServerHostPort = 2089
+SCS::Utils::ReadProperties : Line: privateKeyFile = /home/user/mestrado/svn/openbus/trunk/certificates/ComponentRepository.key
+SCS::Utils::ReadProperties : Line: accessControlServiceCertificateFile = /home/user/mestrado/svn/openbus/trunk/certificates/AccessControlService.crt
+ComponentRepository::IComponent::Startup
+ComponentRepository::IComponent::Startup : Executing init file ComponentRepositoryInit.lua...
+ComponentRepository::IComponent::Startup : Finished.
+ComponentRepository::ComponentRepository::Install
+ComponentRepository::ComponentRepository::Install : Component PingPong1 installed.
+ComponentRepository::ComponentRepository::Install : Finished.
+ComponentRepository::ComponentRepository::GetComponentFile
+ComponentRepository::ComponentRepository::GetComponentFile : Component provided. Finished.
+ComponentRepository::ComponentRepository::GetComponentDescription
+ComponentRepository::ComponentRepository::GetComponentDescription : Description provided. Finished.
+ComponentRepository::ComponentHelp::GetHelpInfo
+ComponentRepository::ComponentHelp::GetHelpInfo : Finished.
+
+-----------------------------------------------------
+Tue Sep 30 11:55:10 2008 1222786510
+SCS::Utils::ReadProperties : Line: initfile = ComponentRepositoryInit.lua
+SCS::Utils::ReadProperties : Line: use_openbus = true
+SCS::Utils::ReadProperties : Line: accessControlServerHostName = localhost
+SCS::Utils::ReadProperties : Line: accessControlServerHostPort = 2089
+SCS::Utils::ReadProperties : Line: privateKeyFile = /home/user/mestrado/svn/openbus/trunk/certificates/ComponentRepository.key
+SCS::Utils::ReadProperties : Line: accessControlServiceCertificateFile = /home/user/mestrado/svn/openbus/trunk/certificates/AccessControlService.crt
+ComponentRepository::IComponent::Startup
+ComponentRepository::IComponent::Startup : Executing init file ComponentRepositoryInit.lua...
+ComponentRepository::IComponent::Startup : Finished.
+ComponentRepository::ComponentRepository::Install
+ComponentRepository::ComponentRepository::Install : Component PingPong1 installed.
+ComponentRepository::ComponentRepository::Install : Finished.
+ComponentRepository::ComponentRepository::GetComponentFile
+ComponentRepository::ComponentRepository::GetComponentFile : Component provided. Finished.
+ComponentRepository::ComponentRepository::GetComponentDescription
+ComponentRepository::ComponentRepository::GetComponentDescription : Description provided. Finished.
+ComponentRepository::ComponentHelp::GetHelpInfo
+ComponentRepository::ComponentHelp::GetHelpInfo : Finished.
+
+-----------------------------------------------------
+Tue Sep 30 11:56:40 2008 1222786600
+SCS::Utils::ReadProperties : Line: initfile = ComponentRepositoryInit.lua
+SCS::Utils::ReadProperties : Line: use_openbus = true
+SCS::Utils::ReadProperties : Line: accessControlServerHostName = localhost
+SCS::Utils::ReadProperties : Line: accessControlServerHostPort = 2089
+SCS::Utils::ReadProperties : Line: privateKeyFile = /home/user/mestrado/svn/openbus/trunk/certificates/ComponentRepository.key
+SCS::Utils::ReadProperties : Line: accessControlServiceCertificateFile = /home/user/mestrado/svn/openbus/trunk/certificates/AccessControlService.crt
+ComponentRepository::IComponent::Startup
+ComponentRepository::IComponent::Startup : Executing init file ComponentRepositoryInit.lua...
+ComponentRepository::IComponent::Startup : Finished.
+ComponentRepository::ComponentRepository::Install
+ComponentRepository::ComponentRepository::Install : Component PingPong1 installed.
+ComponentRepository::ComponentRepository::Install : Finished.
+ComponentRepository::ComponentRepository::GetComponentFile
+ComponentRepository::ComponentRepository::GetComponentFile : Component provided. Finished.
+ComponentRepository::ComponentRepository::GetComponentDescription
+ComponentRepository::ComponentRepository::GetComponentDescription : Description provided. Finished.
+ComponentRepository::ComponentHelp::GetHelpInfo
+ComponentRepository::ComponentHelp::GetHelpInfo : Finished.
+
+-----------------------------------------------------
+Tue Sep 30 11:58:00 2008 1222786680
+SCS::Utils::ReadProperties : Line: initfile = ComponentRepositoryInit.lua
+SCS::Utils::ReadProperties : Line: use_openbus = true
+SCS::Utils::ReadProperties : Line: accessControlServerHostName = localhost
+SCS::Utils::ReadProperties : Line: accessControlServerHostPort = 2089
+SCS::Utils::ReadProperties : Line: privateKeyFile = /home/user/mestrado/svn/openbus/trunk/certificates/ComponentRepository.key
+SCS::Utils::ReadProperties : Line: accessControlServiceCertificateFile = /home/user/mestrado/svn/openbus/trunk/certificates/AccessControlService.crt
+ComponentRepository::IComponent::Startup
+ComponentRepository::IComponent::Startup : Executing init file ComponentRepositoryInit.lua...
+ComponentRepository::IComponent::Startup : Finished.
+ComponentRepository::ComponentRepository::Install
+ComponentRepository::ComponentRepository::Install : Component PingPong1 installed.
+ComponentRepository::ComponentRepository::Install : Finished.
+ComponentRepository::ComponentRepository::GetComponentFile
+ComponentRepository::ComponentRepository::GetComponentFile : Component provided. Finished.
+ComponentRepository::ComponentRepository::GetComponentDescription
+ComponentRepository::ComponentRepository::GetComponentDescription : Description provided. Finished.
+ComponentRepository::ComponentHelp::GetHelpInfo
+ComponentRepository::ComponentHelp::GetHelpInfo : Finished.
+
+-----------------------------------------------------
+Tue Sep 30 11:58:59 2008 1222786739
+SCS::Utils::ReadProperties : Line: initfile = ComponentRepositoryInit.lua
+SCS::Utils::ReadProperties : Line: use_openbus = true
+SCS::Utils::ReadProperties : Line: accessControlServerHostName = localhost
+SCS::Utils::ReadProperties : Line: accessControlServerHostPort = 2089
+SCS::Utils::ReadProperties : Line: privateKeyFile = /home/user/mestrado/svn/openbus/trunk/certificates/ComponentRepository.key
+SCS::Utils::ReadProperties : Line: accessControlServiceCertificateFile = /home/user/mestrado/svn/openbus/trunk/certificates/AccessControlService.crt
+ComponentRepository::IComponent::Startup
+ComponentRepository::IComponent::Startup : Executing init file ComponentRepositoryInit.lua...
+ComponentRepository::IComponent::Startup : Finished.
+ComponentRepository::ComponentRepository::Install
+ComponentRepository::ComponentRepository::Install : Component PingPong1 installed.
+ComponentRepository::ComponentRepository::Install : Finished.
+ComponentRepository::ComponentRepository::GetComponentFile
+ComponentRepository::ComponentRepository::GetComponentFile : Component provided. Finished.
+ComponentRepository::ComponentRepository::GetComponentDescription
+ComponentRepository::ComponentRepository::GetComponentDescription : Description provided. Finished.
+ComponentRepository::ComponentHelp::GetHelpInfo
+ComponentRepository::ComponentHelp::GetHelpInfo : Finished.
+
+-----------------------------------------------------
+Tue Sep 30 12:10:57 2008 1222787457
+SCS::Utils::ReadProperties : Line: initfile = ComponentRepositoryInit.lua
+SCS::Utils::ReadProperties : Line: use_openbus = true
+SCS::Utils::ReadProperties : Line: accessControlServerHostName = localhost
+SCS::Utils::ReadProperties : Line: accessControlServerHostPort = 2089
+SCS::Utils::ReadProperties : Line: privateKeyFile = /home/user/mestrado/svn/openbus/trunk/certificates/ComponentRepository.key
+SCS::Utils::ReadProperties : Line: accessControlServiceCertificateFile = /home/user/mestrado/svn/openbus/trunk/certificates/AccessControlService.crt
+ComponentRepository::IComponent::Startup
+ComponentRepository::IComponent::Startup : Executing init file ComponentRepositoryInit.lua...
+ComponentRepository::IComponent::Startup : Finished.
+ComponentRepository::ComponentRepository::Install
+ComponentRepository::ComponentRepository::Install : Component PingPong1 installed.
+ComponentRepository::ComponentRepository::Install : Finished.
+ComponentRepository::ComponentRepository::GetComponentFile
+ComponentRepository::ComponentRepository::GetComponentFile : Component provided. Finished.
+ComponentRepository::ComponentRepository::GetComponentDescription
+ComponentRepository::ComponentRepository::GetComponentDescription : Description provided. Finished.
+ComponentRepository::ComponentHelp::GetHelpInfo
+ComponentRepository::ComponentHelp::GetHelpInfo : Finished.
+
+-----------------------------------------------------
+Tue Sep 30 12:12:50 2008 1222787570
+SCS::Utils::ReadProperties : Line: initfile = ComponentRepositoryInit.lua
+SCS::Utils::ReadProperties : Line: use_openbus = true
+SCS::Utils::ReadProperties : Line: accessControlServerHostName = localhost
+SCS::Utils::ReadProperties : Line: accessControlServerHostPort = 2089
+SCS::Utils::ReadProperties : Line: privateKeyFile = /home/user/mestrado/svn/openbus/trunk/certificates/ComponentRepository.key
+SCS::Utils::ReadProperties : Line: accessControlServiceCertificateFile = /home/user/mestrado/svn/openbus/trunk/certificates/AccessControlService.crt
+ComponentRepository::IComponent::Startup
+ComponentRepository::IComponent::Startup : Executing init file ComponentRepositoryInit.lua...
+ComponentRepository::IComponent::Startup : Finished.
+ComponentRepository::ComponentRepository::Install
+ComponentRepository::ComponentRepository::Install : Component PingPong1 installed.
+ComponentRepository::ComponentRepository::Install : Finished.
+ComponentRepository::ComponentRepository::GetComponentFile
+ComponentRepository::ComponentRepository::GetComponentFile : Component provided. Finished.
+ComponentRepository::ComponentRepository::GetComponentDescription
+ComponentRepository::ComponentRepository::GetComponentDescription : Description provided. Finished.
+ComponentRepository::ComponentHelp::GetHelpInfo
+ComponentRepository::ComponentHelp::GetHelpInfo : Finished.
+
+-----------------------------------------------------
+Tue Sep 30 12:20:55 2008 1222788055
+SCS::Utils::ReadProperties : Line: initfile = ComponentRepositoryInit.lua
+SCS::Utils::ReadProperties : Line: use_openbus = true
+SCS::Utils::ReadProperties : Line: accessControlServerHostName = localhost
+SCS::Utils::ReadProperties : Line: accessControlServerHostPort = 2089
+SCS::Utils::ReadProperties : Line: privateKeyFile = /home/user/mestrado/svn/openbus/trunk/certificates/ComponentRepository.key
+SCS::Utils::ReadProperties : Line: accessControlServiceCertificateFile = /home/user/mestrado/svn/openbus/trunk/certificates/AccessControlService.crt
+ComponentRepository::IComponent::Startup
+ComponentRepository::IComponent::Startup : Executing init file ComponentRepositoryInit.lua...
+ComponentRepository::IComponent::Startup : Finished.
+ComponentRepository::ComponentRepository::Install
+ComponentRepository::ComponentRepository::Install : Component PingPong1 installed.
+ComponentRepository::ComponentRepository::Install : Finished.
+ComponentRepository::ComponentRepository::GetComponentFile
+ComponentRepository::ComponentRepository::GetComponentFile : Component provided. Finished.
+ComponentRepository::ComponentRepository::GetComponentDescription
+ComponentRepository::ComponentRepository::GetComponentDescription : Description provided. Finished.
+ComponentRepository::ComponentHelp::GetHelpInfo
+ComponentRepository::ComponentHelp::GetHelpInfo : Finished.
+
+-----------------------------------------------------
+Tue Sep 30 12:28:24 2008 1222788504
+SCS::Utils::ReadProperties : Line: initfile = ComponentRepositoryInit.lua
+SCS::Utils::ReadProperties : Line: use_openbus = true
+SCS::Utils::ReadProperties : Line: accessControlServerHostName = localhost
+SCS::Utils::ReadProperties : Line: accessControlServerHostPort = 2089
+SCS::Utils::ReadProperties : Line: privateKeyFile = /home/user/mestrado/svn/openbus/trunk/certificates/ComponentRepository.key
+SCS::Utils::ReadProperties : Line: accessControlServiceCertificateFile = /home/user/mestrado/svn/openbus/trunk/certificates/AccessControlService.crt
+ComponentRepository::IComponent::Startup
+ComponentRepository::IComponent::Startup : Executing init file ComponentRepositoryInit.lua...
+ComponentRepository::IComponent::Startup : Finished.
+ComponentRepository::ComponentRepository::Install
+ComponentRepository::ComponentRepository::Install : Component PingPong1 installed.
+ComponentRepository::ComponentRepository::Install : Finished.
+ComponentRepository::ComponentRepository::GetComponentFile
+ComponentRepository::ComponentRepository::GetComponentFile : Component provided. Finished.
+ComponentRepository::ComponentRepository::GetComponentDescription
+ComponentRepository::ComponentRepository::GetComponentDescription : Description provided. Finished.
+ComponentRepository::ComponentHelp::GetHelpInfo
+ComponentRepository::ComponentHelp::GetHelpInfo : Finished.
+
+-----------------------------------------------------
+Tue Sep 30 12:31:52 2008 1222788712
+SCS::Utils::ReadProperties : Line: initfile = ComponentRepositoryInit.lua
+SCS::Utils::ReadProperties : Line: use_openbus = true
+SCS::Utils::ReadProperties : Line: accessControlServerHostName = localhost
+SCS::Utils::ReadProperties : Line: accessControlServerHostPort = 2089
+SCS::Utils::ReadProperties : Line: privateKeyFile = /home/user/mestrado/svn/openbus/trunk/certificates/ComponentRepository.key
+SCS::Utils::ReadProperties : Line: accessControlServiceCertificateFile = /home/user/mestrado/svn/openbus/trunk/certificates/AccessControlService.crt
+ComponentRepository::IComponent::Startup
+ComponentRepository::IComponent::Startup : Executing init file ComponentRepositoryInit.lua...
+ComponentRepository::IComponent::Startup : Finished.
+ComponentRepository::ComponentRepository::Install
+ComponentRepository::ComponentRepository::Install : Component PingPong1 installed.
+ComponentRepository::ComponentRepository::Install : Finished.
+ComponentRepository::ComponentRepository::GetComponentFile
+ComponentRepository::ComponentRepository::GetComponentFile : Component provided. Finished.
+ComponentRepository::ComponentRepository::GetComponentDescription
+ComponentRepository::ComponentRepository::GetComponentDescription : Description provided. Finished.
+ComponentRepository::ComponentHelp::GetHelpInfo
+ComponentRepository::ComponentHelp::GetHelpInfo : Finished.
+
+-----------------------------------------------------
+Tue Sep 30 12:34:53 2008 1222788893
+SCS::Utils::ReadProperties : Line: initfile = ComponentRepositoryInit.lua
+SCS::Utils::ReadProperties : Line: use_openbus = true
+SCS::Utils::ReadProperties : Line: accessControlServerHostName = localhost
+SCS::Utils::ReadProperties : Line: accessControlServerHostPort = 2089
+SCS::Utils::ReadProperties : Line: privateKeyFile = /home/user/mestrado/svn/openbus/trunk/certificates/ComponentRepository.key
+SCS::Utils::ReadProperties : Line: accessControlServiceCertificateFile = /home/user/mestrado/svn/openbus/trunk/certificates/AccessControlService.crt
+ComponentRepository::IComponent::Startup
+ComponentRepository::IComponent::Startup : Executing init file ComponentRepositoryInit.lua...
+ComponentRepository::IComponent::Startup : Finished.
+ComponentRepository::ComponentRepository::Install
+ComponentRepository::ComponentRepository::Install : Component PingPong1 installed.
+ComponentRepository::ComponentRepository::Install : Finished.
+ComponentRepository::ComponentRepository::GetComponentFile
+ComponentRepository::ComponentRepository::GetComponentFile : Component provided. Finished.
+ComponentRepository::ComponentRepository::GetComponentDescription
+ComponentRepository::ComponentRepository::GetComponentDescription : Description provided. Finished.
+ComponentRepository::ComponentHelp::GetHelpInfo
+ComponentRepository::ComponentHelp::GetHelpInfo : Finished.
+
+-----------------------------------------------------
+Tue Sep 30 12:38:07 2008 1222789087
+SCS::Utils::ReadProperties : Line: initfile = ComponentRepositoryInit.lua
+SCS::Utils::ReadProperties : Line: use_openbus = true
+SCS::Utils::ReadProperties : Line: accessControlServerHostName = localhost
+SCS::Utils::ReadProperties : Line: accessControlServerHostPort = 2089
+SCS::Utils::ReadProperties : Line: privateKeyFile = /home/user/mestrado/svn/openbus/trunk/certificates/ComponentRepository.key
+SCS::Utils::ReadProperties : Line: accessControlServiceCertificateFile = /home/user/mestrado/svn/openbus/trunk/certificates/AccessControlService.crt
+ComponentRepository::IComponent::Startup
+ComponentRepository::IComponent::Startup : Executing init file ComponentRepositoryInit.lua...
+ComponentRepository::IComponent::Startup : Finished.
+ComponentRepository::ComponentRepository::Install
+ComponentRepository::ComponentRepository::Install : Component PingPong1 installed.
+ComponentRepository::ComponentRepository::Install : Finished.
+ComponentRepository::ComponentRepository::GetComponentFile
+ComponentRepository::ComponentRepository::GetComponentFile : Component provided. Finished.
+ComponentRepository::ComponentRepository::GetComponentDescription
+ComponentRepository::ComponentRepository::GetComponentDescription : Description provided. Finished.
+ComponentRepository::ComponentHelp::GetHelpInfo
+ComponentRepository::ComponentHelp::GetHelpInfo : Finished.
+
+-----------------------------------------------------
+Tue Sep 30 14:02:20 2008 1222794140
+SCS::Utils::ReadProperties : Line: initfile = ComponentRepositoryInit.lua
+SCS::Utils::ReadProperties : Line: use_openbus = true
+SCS::Utils::ReadProperties : Line: accessControlServerHostName = localhost
+SCS::Utils::ReadProperties : Line: accessControlServerHostPort = 2089
+SCS::Utils::ReadProperties : Line: privateKeyFile = /home/user/mestrado/svn/openbus/trunk/certificates/ComponentRepository.key
+SCS::Utils::ReadProperties : Line: accessControlServiceCertificateFile = /home/user/mestrado/svn/openbus/trunk/certificates/AccessControlService.crt
+ComponentRepository::IComponent::Startup
+ComponentRepository::IComponent::Startup : Executing init file ComponentRepositoryInit.lua...
+ComponentRepository::IComponent::Startup : Finished.
+ComponentRepository::ComponentRepository::Install
+ComponentRepository::ComponentRepository::Install : Component PingPong1 installed.
+ComponentRepository::ComponentRepository::Install : Finished.
+ComponentRepository::ComponentRepository::GetComponentFile
+ComponentRepository::ComponentRepository::GetComponentFile : Component provided. Finished.
+ComponentRepository::ComponentRepository::GetComponentDescription
+ComponentRepository::ComponentRepository::GetComponentDescription : Description provided. Finished.
+ComponentRepository::ComponentHelp::GetHelpInfo
+ComponentRepository::ComponentHelp::GetHelpInfo : Finished.
+
+-----------------------------------------------------
+Tue Sep 30 14:03:32 2008 1222794212
+SCS::Utils::ReadProperties : Line: initfile = ComponentRepositoryInit.lua
+SCS::Utils::ReadProperties : Line: use_openbus = true
+SCS::Utils::ReadProperties : Line: accessControlServerHostName = localhost
+SCS::Utils::ReadProperties : Line: accessControlServerHostPort = 2089
+SCS::Utils::ReadProperties : Line: privateKeyFile = /home/user/mestrado/svn/openbus/trunk/certificates/ComponentRepository.key
+SCS::Utils::ReadProperties : Line: accessControlServiceCertificateFile = /home/user/mestrado/svn/openbus/trunk/certificates/AccessControlService.crt
+ComponentRepository::IComponent::Startup
+ComponentRepository::IComponent::Startup : Executing init file ComponentRepositoryInit.lua...
+ComponentRepository::IComponent::Startup : Finished.
+ComponentRepository::ComponentRepository::Install
+ComponentRepository::ComponentRepository::Install : Component PingPong1 installed.
+ComponentRepository::ComponentRepository::Install : Finished.
+ComponentRepository::ComponentRepository::GetComponentFile
+ComponentRepository::ComponentRepository::GetComponentFile : Component provided. Finished.
+ComponentRepository::ComponentRepository::GetComponentDescription
+ComponentRepository::ComponentRepository::GetComponentDescription : Description provided. Finished.
+ComponentRepository::ComponentHelp::GetHelpInfo
+ComponentRepository::ComponentHelp::GetHelpInfo : Finished.
+
+-----------------------------------------------------
+Tue Sep 30 14:04:42 2008 1222794282
+SCS::Utils::ReadProperties : Line: initfile = ComponentRepositoryInit.lua
+SCS::Utils::ReadProperties : Line: use_openbus = true
+SCS::Utils::ReadProperties : Line: accessControlServerHostName = localhost
+SCS::Utils::ReadProperties : Line: accessControlServerHostPort = 2089
+SCS::Utils::ReadProperties : Line: privateKeyFile = /home/user/mestrado/svn/openbus/trunk/certificates/ComponentRepository.key
+SCS::Utils::ReadProperties : Line: accessControlServiceCertificateFile = /home/user/mestrado/svn/openbus/trunk/certificates/AccessControlService.crt
+ComponentRepository::IComponent::Startup
+ComponentRepository::IComponent::Startup : Executing init file ComponentRepositoryInit.lua...
+ComponentRepository::IComponent::Startup : Finished.
+ComponentRepository::ComponentRepository::Install
+ComponentRepository::ComponentRepository::Install : Component PingPong1 installed.
+ComponentRepository::ComponentRepository::Install : Finished.
+ComponentRepository::ComponentRepository::GetComponentFile
+ComponentRepository::ComponentRepository::GetComponentFile : Component provided. Finished.
+ComponentRepository::ComponentRepository::GetComponentDescription
+ComponentRepository::ComponentRepository::GetComponentDescription : Description provided. Finished.
+ComponentRepository::ComponentHelp::GetHelpInfo
+ComponentRepository::ComponentHelp::GetHelpInfo : Finished.

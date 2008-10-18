@@ -1,0 +1,4 @@
+Main-Class: scs.demos.logmonitor.servant.LogMonitorApp
+Class-Path: ./core.jar ./executionNode.jar ./container.jar
+
+

@@ -1,0 +1,6 @@
+Main-Class: scs.reasoning.app.DataCollectionApp
+Class-Path: ./core.jar ./executionNode.jar ./container.jar
+
+
+
+

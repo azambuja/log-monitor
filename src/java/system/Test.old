@@ -1,0 +1,52 @@
+package system;
+
+import system.SystemInformation.NegativeCPUTime;
+
+public class Test
+{
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args)
+	{
+		final SystemInformation.CPUUsageSnapshot start;
+		final SystemInformation.CPUUsageSnapshot end;
+		
+		try
+		{
+			System.out.println("SysInfo: " + SystemInformation.getSysInfo());
+			
+			start = SystemInformation.makeCPUUsageSnapshot();
+			long i = 0;
+			while (i < 1000000000) i++;
+			i=0;
+			while (i < 1000000000) i++;
+			i=0;
+			while (i < 1000000000) i++;
+			i=0;
+			while (i < 1000000000) i++;
+			i=0;
+			while (i < 1000000000) i++;
+		
+		
+			
+			end = SystemInformation.makeCPUUsageSnapshot();
+			
+			System.out.println(end.m_CPUTime - start.m_CPUTime);
+			
+			// final long memorySize = SystemInformation.getMemoryUsage();
+			// final long residentSize = SystemInformation.getMemoryResident();
+			// long freemem = SystemInformation.getFreeMem() / 1024;
+			// long maxmem = SystemInformation.getMaxMem() / 1024;
+
+			double receivedCPUUsage = 
+				100.0 * SystemInformation.getProcessCPUUsage(start, end);
+			System.out.println("Current CPU usage is " + receivedCPUUsage + "%");		
+		}
+		catch (NegativeCPUTime e)
+		{
+			e.printStackTrace();
+		}
+	}
+}

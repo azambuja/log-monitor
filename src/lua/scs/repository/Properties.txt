@@ -1,0 +1,6 @@
+initfile = ComponentRepositoryInit.lua
+use_openbus = true
+accessControlServerHostName = localhost
+accessControlServerHostPort = 2089
+privateKeyFile = /home/user/mestrado/svn/openbus/trunk/certificates/ComponentRepository.key
+accessControlServiceCertificateFile = /home/user/mestrado/svn/openbus/trunk/certificates/AccessControlService.crt

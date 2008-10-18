@@ -1,0 +1,14 @@
+module scs{
+	module demos{
+		module logmonitor {
+			interface LogMonitor {
+				void setId(in long identifier);
+				long getId();
+			  void ping();
+  			void pong();
+				void start();
+				void stop();
+			};
+		};
+	};
+};

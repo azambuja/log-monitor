@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jardesc>
+<jar path="C:/Users/lmarques/PUC/TrabInd/trunk/package/java/pingPong.jar"/>
+<options buildIfNeeded="true" compress="true" descriptionLocation="/scs/src/java/scs/demos/pingpong/pingpong.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="false" overwrite="false" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+<storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+<selectedProjects/>
+<manifest generateManifest="false" manifestLocation="/scs/src/java/scs/demos/pingpong/manifest.mf" manifestVersion="1.0" reuseManifest="true" saveManifest="true" usesManifest="true">
+<sealing sealJar="false">
+<packagesToSeal/>
+<packagesToUnSeal/>
+</sealing>
+</manifest>
+<selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
+<javaElement handleIdentifier="=scs/src\/java&lt;scs.demos.pingpong"/>
+<javaElement handleIdentifier="=scs/src\/java&lt;scs.demos.pingpong.servant"/>
+</selectedElements>
+</jardesc>

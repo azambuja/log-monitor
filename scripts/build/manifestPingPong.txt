@@ -1,0 +1,4 @@
+Main-Class: scs.demos.pingpong.servant.PingPongApp
+Class-Path: ./core.jar ./executionNode.jar ./container.jar
+
+

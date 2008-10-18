@@ -1,0 +1,4 @@
+#!/bin/sh
+
+rm -Rf ../../container/PingPong1
+lua ../../../utils/debuglua.lua pingpongluajavaconfig.lua

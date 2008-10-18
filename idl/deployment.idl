@@ -1,0 +1,126 @@
+#ifndef DEPLOYMENT_IDL
+#define DEPLOYMENT_IDL
+
+#include "scs.idl"
+
+module scs {
+
+	module container {
+
+		typedef sequence<string> StringSeq;
+		typedef sequence<octet> OctetSeq;
+		typedef sequence<core::IComponent> IComponentSeq;
+		typedef sequence<unsigned long> InterceptorIds;
+		
+		struct ComponentHandle {
+		   core::IComponent cmp;
+		   core::ComponentId id;
+		   unsigned long instance_id;
+		};
+		typedef sequence<ComponentHandle> ComponentHandleSeq;
+
+		exception ComponentNotFound{};
+		exception ComponentAlreadyLoaded{};
+		exception LoadFailure{};
+		exception InterceptorNotInstalled{};
+		exception ListLockFail{};
+		exception ContainerHalted{};
+
+		interface ComponentLoader {
+		   ComponentHandle load (in core::ComponentId id, in StringSeq args)
+		      raises (ComponentNotFound, ComponentAlreadyLoaded, LoadFailure);
+		   void unload (in ComponentHandle handle)
+		      raises (ComponentNotFound);
+		      
+		   core::ComponentIdSeq getInstalledComponents();  
+		};
+		
+		interface ComponentCollection {
+			ComponentHandleSeq getComponent (in core::ComponentId id);
+			ComponentHandleSeq getComponents ();   
+		};
+		
+		interface ComponentInterception {
+			// 0 in position counts as end of the list.
+			// The same goes for positions above the list's current size.
+			ComponentHandle loadInterceptor (in core::ComponentId id, in StringSeq args, in unsigned long position, in string type)
+				raises (ListLockFail, ComponentNotFound, ComponentAlreadyLoaded, LoadFailure);
+			void unloadInterceptor (in ComponentHandle handle)
+				raises (InterceptorNotInstalled, ListLockFail, ComponentNotFound);
+			void changePosition (in unsigned long instance_id, in unsigned long position)
+				raises (InterceptorNotInstalled, ListLockFail, ComponentNotFound);
+			unsigned long getInterceptorPosition (in unsigned long instance_id)
+				raises (InterceptorNotInstalled, ListLockFail, ComponentNotFound);
+			InterceptorIds getClientInterceptorsOrder ();
+			InterceptorIds getServerInterceptorsOrder ();
+		};
+
+		interface ComponentSuspension {
+			// status: 
+			// 0 means no suspension
+			// a positive number means a halt (launches exception)
+			// a negative number means a suspension (yields coroutines)
+			void suspend ();
+			void halt ();
+			void resume ();
+			long getStatus ();
+		};
+	};
+
+	module execution_node {
+		exception ContainerAlreadyExists{};
+		exception InvalidContainer{};
+		exception RequirementNotMet{ string reason; };
+		exception InvalidProperty{ string reason; };
+				
+		struct Property {
+		   string name;
+		   string value;
+			 boolean read_only;
+		};
+		typedef sequence<Property> PropertySeq;
+		
+		struct ContainerDescription {
+		   core::IComponent container;
+		   string container_name;
+		   core::IComponent execution_node;
+		};
+		typedef sequence<ContainerDescription> ContainerDescriptionSeq;
+		
+		interface ExecutionNode {
+		   core::IComponent startContainer (in string container_name, in PropertySeq props)
+		      raises (ContainerAlreadyExists, InvalidProperty);
+		   void stopContainer(in string container_name)
+		      raises (core::InvalidName);
+		   core::IComponent getContainer (in string container_name);
+		   ContainerDescriptionSeq getContainers ();
+		   string getName();
+		};
+		
+		interface ContainerManager {
+           void registerContainer(in string name, in core::IComponent ctr)
+							raises (ContainerAlreadyExists, InvalidContainer);
+           void unregisterContainer(in string name) raises (core::InvalidName);
+        };
+	};
+	
+    module auxiliar{
+        exception HelpInfoNotAvailable{};
+				exception UndefinedProperty{};
+				exception ReadOnlyProperty{};
+       
+        interface ComponentHelp {
+            string getHelpInfo (in core::ComponentId id)
+               raises (container::ComponentNotFound, HelpInfoNotAvailable);
+       };
+
+        interface ComponentProperties {
+            void setProperty (in execution_node::Property property) raises (ReadOnlyProperty);
+            execution_node::Property getProperty (in string name) raises (UndefinedProperty);
+            execution_node::PropertySeq getProperties ();
+       };
+  };     
+                
+};
+
+#endif

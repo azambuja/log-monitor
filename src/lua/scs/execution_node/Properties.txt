@@ -1,0 +1,9 @@
+#platform = WIN
+#developers = Carlos
+#host = localhost
+#port = 20202
+#lua_name = lua
+timeout = 20
+machines = lua lua5.1 luajit java servicelauncher
+#interception = intercepted;corba;typed;cooperative;base
+oilverbose = 0

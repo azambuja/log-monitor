@@ -1,0 +1,46 @@
+#ifndef REPOSITORY_IDL
+#define REPOSITORY_IDL
+
+#include "deployment.idl"
+
+module scs {
+    module repository {
+
+       exception ComponentAlreadyInstalled{};
+       exception ComponentNotInstalled{};
+
+       struct ComponentDescription {
+         core::ComponentId id;
+         string entry_point;
+         boolean shared;
+         string extension; 
+       };
+       typedef sequence<ComponentDescription> ComponentDescriptionSeq;
+
+       interface ComponentRepository {
+           void install (in core::ComponentId id, in string entry_point,
+                 in boolean shared, in container::OctetSeq file, in string help_info, in string extension)
+                 raises (ComponentAlreadyInstalled);
+      
+           void uninstall (in core::ComponentId id)
+                raises (ComponentNotInstalled);
+       
+           void copy (in core::ComponentId id, in ComponentRepository rep)
+               raises (ComponentAlreadyInstalled, ComponentNotInstalled);
+   
+           container::OctetSeq getComponentFile (in core::ComponentId id)
+               raises (ComponentNotInstalled);
+      
+           container::OctetSeq getComponentFileByPieces(in core::ComponentId id, in long size, in long start, out boolean finished)
+               raises (ComponentNotInstalled);
+	 
+           void appendFile (in core::ComponentId componentId, in container::OctetSeq file);
+      
+           ComponentDescription getComponentDescription (in core::ComponentId id)
+               raises (ComponentNotInstalled);
+      
+           ComponentDescriptionSeq  getInstalledComponents();  
+        };
+    };
+};
+#endif

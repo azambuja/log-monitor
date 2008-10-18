@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jardesc>
+<jar path="C:/Users/lmarques/PUC/TrabInd/trunk/package/java/philosopher.jar"/>
+<options buildIfNeeded="true" compress="true" descriptionLocation="/scs/src/java/scs/demos/philosopher/philosopher.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="false" overwrite="false" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+<storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+<selectedProjects/>
+<manifest generateManifest="false" manifestLocation="/scs/src/java/scs/demos/philosopher/manifest.mf" manifestVersion="1.0" reuseManifest="true" saveManifest="true" usesManifest="true">
+<sealing sealJar="false">
+<packagesToSeal/>
+<packagesToUnSeal/>
+</sealing>
+</manifest>
+<selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
+<javaElement handleIdentifier="=scs/src\/java&lt;scs.demos.philosopher{_PhilosopherStub.java"/>
+<javaElement handleIdentifier="=scs/src\/java&lt;scs.demos.philosopher{_ForkStub.java"/>
+<javaElement handleIdentifier="=scs/src\/java&lt;scs.demos.philosopher{ForkOperations.java"/>
+<javaElement handleIdentifier="=scs/src\/java&lt;scs.demos.philosopher{ObserverPOA.java"/>
+<javaElement handleIdentifier="=scs/src\/java&lt;scs.demos.philosopher{StatusInfoHolder.java"/>
+<javaElement handleIdentifier="=scs/src\/java&lt;scs.demos.philosopher{StatusInfoHelper.java"/>
+<javaElement handleIdentifier="=scs/src\/java&lt;scs.demos.philosopher{PhilosopherOperations.java"/>
+<javaElement handleIdentifier="=scs/src\/java&lt;scs.demos.philosopher{ForkPOA.java"/>
+<javaElement handleIdentifier="=scs/src\/java&lt;scs.demos.philosopher{Philosopher.java"/>
+<javaElement handleIdentifier="=scs/src\/java&lt;scs.demos.philosopher{PhilosopherPOA.java"/>
+<javaElement handleIdentifier="=scs/src\/java&lt;scs.demos.philosopher{ForkHolder.java"/>
+<javaElement handleIdentifier="=scs/src\/java&lt;scs.demos.philosopher{ObserverPOATie.java"/>
+<javaElement handleIdentifier="=scs/src\/java&lt;scs.demos.philosopher{ObserverOperations.java"/>
+<javaElement handleIdentifier="=scs/src\/java&lt;scs.demos.philosopher{Observer.java"/>
+<javaElement handleIdentifier="=scs/src\/java&lt;scs.demos.philosopher{ObserverHelper.java"/>
+<javaElement handleIdentifier="=scs/src\/java&lt;scs.demos.philosopher{ObserverHolder.java"/>
+<javaElement handleIdentifier="=scs/src\/java&lt;scs.demos.philosopher{PhilosopherHelper.java"/>
+<javaElement handleIdentifier="=scs/src\/java&lt;scs.demos.philosopher{Fork.java"/>
+<javaElement handleIdentifier="=scs/src\/java&lt;scs.demos.philosopher{PhilosopherPOATie.java"/>
+<javaElement handleIdentifier="=scs/src\/java&lt;scs.demos.philosopher{ForkPOATie.java"/>
+<javaElement handleIdentifier="=scs/src\/java&lt;scs.demos.philosopher.servant"/>
+<javaElement handleIdentifier="=scs/src\/java&lt;scs.demos.philosopher{PhilosopherState.java"/>
+<javaElement handleIdentifier="=scs/src\/java&lt;scs.demos.philosopher{_ObserverStub.java"/>
+<javaElement handleIdentifier="=scs/src\/java&lt;scs.demos.philosopher{PhilosopherHolder.java"/>
+<javaElement handleIdentifier="=scs/src\/java&lt;scs.demos.philosopher{StatusInfo.java"/>
+<javaElement handleIdentifier="=scs/src\/java&lt;scs.demos.philosopher{PhilosopherStateHelper.java"/>
+<javaElement handleIdentifier="=scs/src\/java&lt;scs.demos.philosopher{PhilosopherStateHolder.java"/>
+<javaElement handleIdentifier="=scs/src\/java&lt;scs.demos.philosopher{ForkHelper.java"/>
+</selectedElements>
+</jardesc>

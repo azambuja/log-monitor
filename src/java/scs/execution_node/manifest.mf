@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Main-Class: scs.execution_node.servant.ExecutionNodeApp
+Class-Path: ./core.jar ./container.jar
+

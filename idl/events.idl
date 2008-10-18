@@ -1,0 +1,52 @@
+#ifndef EVENTS_IDL
+#define EVENTS_IDL
+
+#include "scs.idl"
+
+module scs {
+	module event_service {
+	   typedef any Event;
+	   
+	   exception NameAlreadyInUse {
+	      string name;
+	   };
+	   
+	   exception InvalidName {
+	      string name;
+	   };
+	   
+	   
+	   struct ChannelDescr {
+	      string name;
+	      core::IComponent channel;
+	   };
+	   typedef sequence<ChannelDescr> ChannelDescrSeq;
+	   
+	   
+	   
+	   interface EventSink {
+	      void push (in Event ev);
+	      void disconnect();
+	   };
+	   
+		  
+	   interface ChannelFactory {
+	      core::IComponent create (in string name) raises (NameAlreadyInUse);
+	      void destroy (in string name) raises (InvalidName);
+	   };
+	   
+	   interface ChannelCollection {
+	      core::IComponent getChannel (in string name);
+	      ChannelDescrSeq getAll();
+	   };
+
+       interface ChannelManagement{
+              boolean subscribeChannel( in string clientName, in string channelName, in event_service::EventSink sink );
+	          void cancelChannel( in string clientName, in string channelName );
+              void notifyChannel(in string channelName, in Event ev); 
+	   };
+
+  
+	};
+};
+#endif

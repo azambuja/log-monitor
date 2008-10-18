@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="scs/demos/mapreduce/seed/" including="scs/|system/" kind="src" path=""/>
+	<classpathentry kind="src" path="scs/demos/mapreduce/seed"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path=""/>
+</classpath>

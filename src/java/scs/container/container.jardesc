@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jardesc>
+<jar path="C:/Users/lmarques/PUC/TrabInd/trunk/package/java/container.jar"/>
+<options buildIfNeeded="true" compress="true" descriptionLocation="/scs/src/java/scs/container/container.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="false" overwrite="false" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+<storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+<selectedProjects/>
+<manifest generateManifest="false" mainClassHandleIdentifier="=scs/src\/java&lt;scs.container.servant{ContainerApp.java[ContainerApp" manifestLocation="/scs/src/java/scs/container/manifest.mf" manifestVersion="1.0" reuseManifest="true" saveManifest="true" usesManifest="true">
+<sealing sealJar="false">
+<packagesToSeal/>
+<packagesToUnSeal/>
+</sealing>
+</manifest>
+<selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
+<javaElement handleIdentifier="=scs/src\/java&lt;scs.container"/>
+<javaElement handleIdentifier="=scs/src\/java&lt;scs.instrumentation.app"/>
+<javaElement handleIdentifier="=scs/src\/java&lt;scs.instrumentation.interceptor"/>
+<javaElement handleIdentifier="=scs/src\/java&lt;scs.instrumentation.servant"/>
+<javaElement handleIdentifier="=scs/src\/java&lt;scs.instrumentation"/>
+<javaElement handleIdentifier="=scs/src\/java&lt;scs.container.servant"/>
+</selectedElements>
+</jardesc>

@@ -1,0 +1,57 @@
+#ifndef REASONING_IDL
+#define REASONING_IDL
+
+#include "deployment.idl"
+#include "scs.instrumentation.idl"
+
+module scs {
+
+	module reasoning {
+	
+               typedef sequence<string> Unlabeled;
+
+	       struct MetricDescription{
+                    string metricName;
+                    double metricValue;
+                };
+            	typedef sequence<MetricDescription> MetricDescriptionSeq;
+              
+                struct SystemStateValue{
+                     boolean compliance;
+                     MetricDescriptionSeq rootCause;
+                };
+                
+                struct DataCollectionProperty{
+                     string trainingFlag;
+                     string trainingFileName;
+                     container::IComponentSeq observablesContainers;
+                     instrumentation::InterfaceStatsSeq observablesInterfaces;
+                };
+
+                exception FileNotFound {};
+                exception FileReadingException {};
+                exception BuildClassifierException {};
+                exception DataCollectionFailure{};  
+
+		
+                interface Reasoning{
+                    void buildModel(in string fileName) raises (BuildClassifierException);
+                    string adjudicator(in Unlabeled metricsToLabel);
+                };
+
+                interface Monitor{
+                    boolean prepareToDataCollection(in DataCollectionProperty props); 
+                    void startDataCollection();
+                    void finishDataCollection();
+                    string getSystemState(); 
+                    boolean ping();
+                    string getNode(); 
+                    void setNode(in string name);
+                };
+
+         };
+
+};
+
+#endif
+

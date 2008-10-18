@@ -1,0 +1,6 @@
+Main-Class: scs.reasoning.app.ReasoningApp
+Class-Path: ./core.jar ./executionNode.jar ./container.jar ./weka.jar
+
+
+
+

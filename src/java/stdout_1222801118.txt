@@ -1,0 +1,23 @@
+ContainerServant.initialize() : Configuration = {container.java=../../scripts/execute/run-container.sh, component-Fork-1=scs.demos.philosopher.servant.ForkComponent, jar-files=S:/scs_healing/versao-0.3/src/java/pingPong.jar;S:/scs_healing/versao-0.3/src/java/philosopher.jar;S:/scs_healing/versao-0.3/src/java/reasoning.jar;S:/scs_healing/versao-0.3/src/java/monitor.jar;S:/scs_healing/versao-0.3/src/java/weka.jar;S:/scs_healing/versao-0.3/src/java/weka-src.jar, component-Master-1=scs.demos.mapreduce.schedule.MasterComponent, org.omg.CORBA.ORBInitialHost=localhost, enableStatsCollection=0, component-Monitor-1=scs.reasoning.servant.MonitorComponent, component-Observer-1=scs.demos.philosopher.servant.ObserverComponent, component-PingPong-1=scs.demos.pingpong.servant.PingPongComponent, org.omg.CORBA.ORBInitialPort=1050, component-Worker-1=scs.demos.mapreduce.schedule.WorkerComponent, timeout=300, component-EventManager-1=scs.event_service.servant.EventManagerServant, component-CpuStress-1=scs.instrumentation.test.CpuStressComponent, component-Philosopher-1=scs.demos.philosopher.servant.PhilosopherComponent}
+PingPong 2 received an start call!
+PingPong 1 received an start call!
+Received ping from 1
+Received pong from 2
+Received ping from 1
+Received pong from 2
+Received ping from 1
+Received pong from 2
+Received ping from 1
+Received pong from 2
+Received ping from 1
+Received pong from 2
+Received ping from 1
+Received pong from 2
+Received ping from 1
+Received pong from 2
+Received ping from 1
+Received pong from 2
+Received ping from 1
+Received pong from 2
+Received ping from 1
+Received pong from 2

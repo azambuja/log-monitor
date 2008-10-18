@@ -1,0 +1,112 @@
+#include "scs.idl"
+
+module scs{
+	module demos{
+		module mapreduce {
+		
+		exception PropertiesException {}; 
+                exception ConectionToExecNodesException {};
+                exception WorkerInstantiationException {};
+                exception TaskInstantiationException {};
+                exception ChannelException {};
+                exception StartFailureException{};
+                exception IOMapReduceException{};
+                exception SplitException{};
+                exception IOFormatException{};
+                        
+                enum TaskStatus{MAP, REDUCE, ERROR, END}; 
+
+ 		//Reporta log de mensagens de operacoes
+                interface Reporter {
+                	boolean open ();
+                	void report (in long level, in string message);
+			void close();
+		};
+
+                // Representa uma particao do arquivo de entrada
+                interface  FileSplit {
+			string getPath();
+                    	long long getLength();
+		};
+                typedef sequence<FileSplit> FileSplits;
+
+		//Define operacoes para ler pares <key, value> 
+                interface RecordReader {
+			void open(in string confFileName, in FileSplit fileSplit, in Reporter reporter) 
+                             raises (IOMapReduceException);
+			boolean next (out any key, out any value) raises (IOMapReduceException);
+			void close() raises (IOMapReduceException);
+                	FileSplit getFileSplit();
+                 };
+                 typedef sequence<RecordReader> RecordReaders;
+
+                 //Define operacoes para escrever pares <key, value> 
+                 interface RecordWriter {
+			void open(in string confFileName, in FileSplit fileSplit, in Reporter reporter) 
+                                  raises (IOMapReduceException);
+                    	boolean write (in any key, in any value) raises (IOMapReduceException);
+                    	void close() raises (IOMapReduceException);
+ 			FileSplit getFileSplit();
+		};
+                typedef sequence<RecordWriter> RecordWriters;
+ 
+                //Descreve a entrada-saida do processo mapreduce
+                interface IOFormat {
+                   	RecordReader getRecordReader(in TaskStatus status) raises (IOFormatException);
+                    	RecordWriter getRecordWriter(in TaskStatus status) raises (IOFormatException);
+                    	FileSplits getSplits(in string confFileName, in Reporter reporter) raises (SplitException);
+		};
+
+                //Usado por mappers and reducers para emitir pares <key,value> intermediarios
+                interface OutputCollector {
+			void collect (in any key, in any value) raises (IOMapReduceException);
+                        void flush() raises (IOMapReduceException);
+                        void close() raises (IOMapReduceException); 
+		};
+
+                typedef sequence<any> Iterator;
+                                
+                // Define a operacao map 
+                interface Mapper {
+                   	void map(in any key, in any value, in OutputCollector collector, in Reporter reporter) 
+                             raises (IOMapReduceException);
+                };
+                
+                // Define a operacao reduce
+                interface Reducer {
+		    	void reduce (in any key, in Iterator values, in OutputCollector collector, in Reporter reporter) 
+                             raises (IOMapReduceException); 
+		};
+		
+		//Define a operacao para distribuir chaves para os reducers 
+                interface Partitioner {
+			long getPartition(in any key, in any value, in long numPartitions); 
+		}; 
+                                               
+                interface Task {
+                        long getId();
+                        void setStatus(in TaskStatus status);
+			TaskStatus getStatus();
+                        FileSplits getInput();
+                        FileSplits getOutput();
+                        Reporter getReporter();          
+                        void run() raises (IOMapReduceException); 
+    		};
+                        
+                interface Master {
+                 	void start(in string confFileName, in Reporter reporter) 
+                         	raises (PropertiesException, ConectionToExecNodesException, 
+                         	ChannelException, WorkerInstantiationException,TaskInstantiationException,
+                         	StartFailureException);
+                };
+
+                interface Worker{
+                	boolean ping();
+                    	void execute (in core::IComponent channel, in Task task);
+ 			string getNode();
+                    	void setNode(in string name); 
+                };                     
+	    };
+	};
+};
+		

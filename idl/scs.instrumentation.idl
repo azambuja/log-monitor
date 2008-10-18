@@ -1,0 +1,71 @@
+#ifndef _SCS_INSTRUMENTATION_IDL_
+#define _SCS_INSTRUMENTATION_IDL_
+
+#include "events.idl"
+
+module scs {
+
+	module instrumentation {
+
+                exception InterfaceStatsNotAvailable{};
+                exception ComponentStatsNotAvailable{}; 
+                exception IOStatsNotAvailable{};
+                exception NetworkStatsNotAvailable{};
+	
+		struct MethodStats {
+		     string methodName;
+		     unsigned long callsCount;
+		     unsigned long long cpuTime;
+		     unsigned long long elapsedTime;
+		};
+
+		typedef sequence<MethodStats> MethodStatsSeq;
+
+                struct InterfaceStats {
+		     MethodStatsSeq  methodStatsCollection;
+		     string interfaceName;
+		};
+		
+		typedef sequence<InterfaceStats> InterfaceStatsSeq;
+		
+                struct ContainerStats {
+		     string containerName;
+		     unsigned long long cpuTime;
+		     double cpuUsage;
+		     double avgCpuUsage;
+		     unsigned long long elapsedTime;
+		     unsigned long long memoryUsage;
+		};
+		
+	        struct SystemIOStats{
+                     unsigned long long sectorsRead;
+                     unsigned long long timeReading;
+                     unsigned long long sectorsWriten;
+                     unsigned long long timeWriting; 
+                     unsigned long long nfsSectorsRead; 
+                     unsigned long long nfsSectorsWriten;
+                };
+
+                struct SystemNetworkStats{
+                     unsigned long long bytesReceived;
+                     unsigned long long bytesTransmitted;
+                };  
+
+                interface StatsCollection {
+		     MethodStatsSeq getInterfaceStats(in string interfaceName)
+                                    raises (InterfaceStatsNotAvailable);
+		     InterfaceStatsSeq getComponentsStats()
+                                    raises (ComponentStatsNotAvailable);   
+		     ContainerStats getContainerStats();
+                     SystemIOStats getIOStats() raises (IOStatsNotAvailable);
+                     SystemNetworkStats getNetworkStats() raises (NetworkStatsNotAvailable);
+         	     boolean subscribeMethodNotification( in string clientName, in string ifname, 
+                                                          in string method, in event_service::EventSink sink );
+		     void cancelMethodNotification( in string clientName, in string ifname, in string method );
+                     boolean subscribeContainerNotification(in string clientName, in event_service::EventSink sink);
+                     void cancelContainerNotification(in string clientName);
+               };
+         };
+};
+
+#endif

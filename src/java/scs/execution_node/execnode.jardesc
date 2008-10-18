@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jardesc>
+<jar path="C:/Users/lmarques/PUC/TrabInd/trunk/package/java/executionNode.jar"/>
+<options buildIfNeeded="true" compress="true" descriptionLocation="/scs/src/java/scs/execution_node/execnode.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="false" overwrite="false" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+<storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+<selectedProjects/>
+<manifest generateManifest="false" mainClassHandleIdentifier="=scs/src\/java&lt;scs.execution_node.servant{ExecutionNodeApp.java[ExecutionNodeApp" manifestLocation="/scs/src/java/scs/execution_node/manifest.mf" manifestVersion="1.0" reuseManifest="true" saveManifest="true" usesManifest="true">
+<sealing sealJar="false">
+<packagesToSeal/>
+<packagesToUnSeal/>
+</sealing>
+</manifest>
+<selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
+<javaElement handleIdentifier="=scs/src\/java&lt;scs.execution_node"/>
+<javaElement handleIdentifier="=scs/src\/java&lt;scs.execution_node.servant"/>
+<file path="/scs/.classpath"/>
+</selectedElements>
+</jardesc>

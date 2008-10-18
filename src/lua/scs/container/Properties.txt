@@ -1,0 +1,7 @@
+#platform = WIN
+#enIOR = execution_node.ior
+timeout = 10
+#host = localhost
+#port = 20209
+#interception = intercepted;corba;typed;cooperative;base
+oilverbose = 0

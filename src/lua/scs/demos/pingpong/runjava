@@ -1,0 +1,3 @@
+#!/bin/sh
+
+lua ../../../utils/debuglua.lua pingpongjavaconfig.lua

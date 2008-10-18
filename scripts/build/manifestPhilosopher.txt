@@ -1,0 +1,5 @@
+Main-Class: scs.demos.philosopher.servant.PhilosopherApp
+Class-Path: core.jar executionNode.jar container.jar
+
+
+

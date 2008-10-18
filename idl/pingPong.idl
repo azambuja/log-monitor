@@ -1,0 +1,15 @@
+module scs{
+	module demos{
+		module pingpong {
+			interface PingPong {
+				void setId(in long identifier);
+				long getId();
+			  void ping();
+  			void pong();
+				void start();
+				void stop();
+			};
+		};
+	};
+};
+		
