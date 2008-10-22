@@ -4,10 +4,15 @@ module scs{
 			interface LogMonitor {
 				void setId(in long identifier);
 				long getId();
-			  void ping();
-  			void pong();
-				void start();
-				void stop();
+			  	void publishLog(in any logMessage);
+			};
+			interface EventSink {
+				void push(in any event);
+				void disconnect();
+			};
+			interface LogViewer {
+				void setId(in long identifier);
+				long getId();
 			};
 		};
 	};
