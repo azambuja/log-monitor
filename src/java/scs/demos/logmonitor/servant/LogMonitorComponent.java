@@ -1,4 +1,5 @@
 package scs.demos.logmonitor.servant;
+
 import java.util.ArrayList;
 import org.omg.PortableServer.POAPackage.ServantNotActive;
 import org.omg.PortableServer.POAPackage.WrongPolicy;
@@ -11,14 +12,15 @@ import scs.demos.logmonitor.LogMonitor;
 import scs.demos.logmonitor.LogMonitorHelper;
 
 public class LogMonitorComponent extends IComponentServant {
+	private InfoServant infoServant = null;
+	private IReceptacles info = null;
+	private LogMonitorServant logMonitorServant = null;
+	private LogMonitor logMonitor = null;
+
 	private final static String IFACE_LOGMONITOR = "scs::demos::logmonitor::LogMonitor";
 	private final static String FACET_LOGMONITOR = "LogMonitor";
 	private static final String FACET_INFO = "infoReceptacle";
 	private static final String IFACE_INFO = "scs::core::IReceptacles";
-	private LogMonitorServant logMonitorServant = null;
-	private LogMonitor logMonitor = null;
-	private InfoServant infoServant = null;
-	private IReceptacles info = null;
 
 	@Override
 	protected ArrayList<FacetDescription> createFacets() {
@@ -42,8 +44,7 @@ public class LogMonitorComponent extends IComponentServant {
 		if (this.logMonitorServant == null) {
 			try {
 				this.logMonitorServant = new LogMonitorServant(this);
-				this.logMonitor = LogMonitorHelper.narrow(this._poa()
-					.servant_to_reference(this.logMonitorServant));
+				this.logMonitor = LogMonitorHelper.narrow(this._poa().servant_to_reference(this.logMonitorServant));
 			} catch (ServantNotActive e) {
 				e.printStackTrace();
 			} catch (WrongPolicy e) {
@@ -57,8 +58,7 @@ public class LogMonitorComponent extends IComponentServant {
 		this.infoServant = new InfoServant();
 
 		try {
-			this.info = IReceptaclesHelper.narrow(this._poa()
-				.servant_to_reference(this.infoServant));
+			this.info = IReceptaclesHelper.narrow(this._poa().servant_to_reference(this.infoServant));
 		} catch (ServantNotActive e) {
 			e.printStackTrace();
 		} catch (WrongPolicy e) {
@@ -76,5 +76,4 @@ public class LogMonitorComponent extends IComponentServant {
 	protected boolean doStartup() {
 		return true;
 	}
-
 }

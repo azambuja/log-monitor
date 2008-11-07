@@ -1,7 +1,6 @@
 package scs.demos.logmonitor.servant;
 
 import gnu.getopt.Getopt;
-import java.io.*;
 
 import org.omg.CORBA.ORB;
 import org.omg.CORBA.Object;
@@ -43,28 +42,33 @@ import scs.core.InvalidConnection;
 import scs.core.InvalidName;
 import scs.core.StartupFailed;
 import scs.core.FacetDescription;
-import scs.demos.logmonitor.LogMonitor;
-import scs.demos.logmonitor.LogMonitorHelper;
+import scs.demos.logmonitor.LogViewer;
+import scs.demos.logmonitor.LogViewerHelper;
+import scs.demos.logmonitor.servant.EventSinkViewerServant;
 import scs.execution_node.ContainerAlreadyExists;
 import scs.execution_node.ExecutionNode;
 import scs.execution_node.ExecutionNodeHelper;
 import scs.execution_node.InvalidProperty;
 import scs.execution_node.Property;
 
-public class LogMonitorApp {
+import java.io.*;
+
+public class LogViewerApp {
 
 	private static final String EXEC_NODE_NAME = "ExecutionNode";
 	private static final String EXEC_NODE_FACET = "scs::execution_node::ExecutionNode";
-	private static final String LM_CONTAINER_NAME = "LogMonitorContainer";
+	private static final String LV_CONTAINER_NAME = "LogViewerContainer";
 	private static final String EV_CONTAINER_NAME = "EventChannelContainer";
-
-	private ExecutionNode[] execNode = null;
 	private IComponent logMonitorComp = null;
+	private IComponent logViewerComp = null;
+	private ExecutionNode[] execNode = null;
 	private String exception;
 
-	public LogMonitorApp(String evHost, String evPort, String monitorHost, String monitorPort) {
-		if (!initialize(evHost, evPort, monitorHost, monitorPort))
+	public LogViewerApp(String ecHostname, String ecPort, String lvHostname, String lvPort) {
+		if (!initialize(ecHostname, ecPort, lvHostname, lvPort)) {
 			System.err.println("Erro iniciando a aplicacao");
+			System.exit(1);
+		}
 	}
 
 
@@ -91,7 +95,9 @@ public class LogMonitorApp {
 		return true;
 	}
 
-
+	
+	
+	/* Cria um component no container associado a loader*/
 	private ComponentHandle createHandle(ComponentLoader loader, ComponentId compId){
 		ComponentHandle handle = null;
 
@@ -111,79 +117,69 @@ public class LogMonitorApp {
 		return handle;
 	}
 
-
-	private boolean initialize(String evHost, String evPort, String monitorHost, String monitorPort) {
-
-		String evCorbaname = null;
-		String monitorCorbaname = null;
-		int id = 1;
+	private boolean initialize(String ecHostname, String ecPort, String lvHostname, String lvPort) {
+		ORB orb = null;
+		String[] ecArgs = new String[2];
+		ecArgs[0] = ecHostname;
+		ecArgs[1] = ecPort;
+		
+		String[] viewerArgs = new String[2];
+		viewerArgs[0] = lvHostname;
+		viewerArgs[1] = lvPort;
 
 		execNode = new ExecutionNode[2];
-	
-		String[] evArgs = new String[2];
-		evArgs[0] = evHost;
-		evArgs[1] = evPort;
-		
-		String[] monitorArgs = new String[2];
-		monitorArgs[0] = monitorHost;
-		monitorArgs[1] = monitorPort;
+		String ecCorbaname = "corbaname::" + ecHostname + ":" + ecPort + "#" + EXEC_NODE_NAME ;
+		String lvCorbaname = "corbaname::" + lvHostname + ":" + lvPort + "#" + EXEC_NODE_NAME ;
 
-		evCorbaname = "corbaname::" + evHost + ":" + evPort + "#"	+ EXEC_NODE_NAME ;
-		monitorCorbaname = "corbaname::" + monitorHost + ":" + monitorPort + "#"	+ EXEC_NODE_NAME ;
+		System.out.println("Conectando ao execution node: " + ecCorbaname);
 
-		System.out.println("Conectando ao execution node: " + evCorbaname);
-
-		ORB orb = ORB.init(evArgs, null);
-
-		//Connecting to EventManager/EventChannel Execution Node
+		//Connecting to LogMonitor/EventManager/EventChannel Execution Node
 		try {
-			org.omg.CORBA.Object obj = orb.string_to_object(evCorbaname);
+			orb = ORB.init(ecArgs, null);
+			org.omg.CORBA.Object obj = orb.string_to_object(ecCorbaname);
 			IComponent execNodeComp = IComponentHelper.narrow(obj);
 			Object ob = execNodeComp.getFacet(EXEC_NODE_FACET);
 			execNode[0] = ExecutionNodeHelper.narrow(ob);
-
 		} catch (SystemException ex) {
-			System.err.println("Erro ao conectar com o ExecutionNode " + evCorbaname);
+			System.err.println("Erro ao conectar com o ExecutionNode " + ecCorbaname);
 			System.exit(1);
 		}
 
-		orb = ORB.init(monitorArgs, null);
-
-		//Creating Log Monitor Execution Node
+		//Creating Log Viewer Execution Node
 		try {
-			org.omg.CORBA.Object obj = orb.string_to_object(monitorCorbaname);
+			orb = ORB.init(viewerArgs, null);
+			org.omg.CORBA.Object obj = orb.string_to_object(lvCorbaname);
 			IComponent execNodeComp = IComponentHelper.narrow(obj);
 			execNodeComp.startup();
 			Object ob = execNodeComp.getFacet(EXEC_NODE_FACET);
 			execNode[1] = ExecutionNodeHelper.narrow(ob);
-
 		} catch (SystemException ex) {
-			System.err.println("Erro ao conectar com o ExecutionNode " + monitorCorbaname);
+			System.err.println("Erro ao conectar com o ExecutionNode " + lvCorbaname);
 			System.exit(1);
 		} catch (StartupFailed e) {
-			System.err.println("Startup do ExecutionNode " + monitorCorbaname + "falhou.");
+			System.err.println("Startup do ExecutionNode " + lvCorbaname + "falhou.");
 			System.exit(1);
 		}
 
-		//Creating Log monitor Container
-		if (!this.createContainer(LM_CONTAINER_NAME,execNode[1])) {
-			System.err.println("Erro criando o container em " + monitorCorbaname);
+		//Creating Log Viewer Container
+		if (!this.createContainer(LV_CONTAINER_NAME, execNode[1])) {
+			System.err.println("Erro criando o container em " + lvCorbaname);
 			return false;
 		}
 
-		//Retrieving EventChannel Container
+		//Retrieving LogMonitor/EventChannel Container
 		IComponent evContainer;
 		evContainer = execNode[0].getContainer(EV_CONTAINER_NAME);
 
-		//Retrieving LogMonitor Container
-		IComponent monitorContainer;
-		monitorContainer = execNode[1].getContainer(LM_CONTAINER_NAME);
+		//Retrieving LogViewer Container
+		IComponent viewerContainer;
+		viewerContainer = execNode[1].getContainer(LV_CONTAINER_NAME);
 
 		//Starting Container
 		try {
-			monitorContainer.startup();
+			viewerContainer.startup();
 		} catch (StartupFailed e) {
-			System.out.println("Erro no startup do container em " + monitorCorbaname);
+			System.out.println("Erro no startup do container em " + lvCorbaname);
 			System.exit(1);
 		}
 
@@ -191,15 +187,15 @@ public class LogMonitorApp {
 		ComponentCollection compCollection = ComponentCollectionHelper.narrow(evContainer
 			.getFacet("scs::container::ComponentCollection"));
 		if (compCollection == null) {
-			System.out.println("Erro ao retornar faceta loader em " + evCorbaname);
+			System.out.println("Erro ao retornar faceta loader em " + ecCorbaname);
 			return false;
 		}
 
 		//Getting Component Loader Interface
-		ComponentLoader loader = ComponentLoaderHelper.narrow(monitorContainer
+		ComponentLoader loader = ComponentLoaderHelper.narrow(viewerContainer
 			.getFacet("scs::container::ComponentLoader"));
 		if (loader == null) {
-			System.out.println("Erro ao retornar faceta loader em " + monitorCorbaname);
+			System.out.println("Erro ao retornar faceta loader em " + lvCorbaname);
 			return false;
 		}
 
@@ -217,34 +213,25 @@ public class LogMonitorApp {
 
 		IComponent eventMgr = eventMgrHandle.cmp;
 
-		//Loading Log monitor Component
-		ComponentHandle logmonitorHandle = null;
-		ComponentId logmonitorCompId = new ComponentId();
-		logmonitorCompId.name = "LogMonitor";
-		logmonitorCompId.version = 1;
+		//Loading Log Viewer Component
+		ComponentHandle logViewerHandle = null;
+		ComponentId logViewerCompId = new ComponentId();
+		logViewerCompId.name = "LogViewer";
+		logViewerCompId.version = 1;
 
-
-		logmonitorHandle = createHandle(loader, logmonitorCompId);
-		if (logmonitorHandle == null) {
+		logViewerHandle = createHandle(loader, logViewerCompId);
+		if (logViewerHandle == null) {
 			return false;
 		}
 
-		logMonitorComp = logmonitorHandle.cmp;
+		logViewerComp = logViewerHandle.cmp;
 
-		//Getting LogMonitor Receptacle, where event channel will connect
-		IReceptacles info1 = IReceptaclesHelper.narrow(logMonitorComp.getFacetByName("infoReceptacle"));
-		if( info1 == null ) {
-			System.out.println("Erro ao retornar receptaculo do LogMonitor!");
+		//Getting EventSink Facet from LogViewer Component
+		EventSink eventSinkViewer = EventSinkHelper.narrow(logViewerComp.getFacet("scs::demos::logmonitor::EventSink"));
+		if( logViewerComp.getFacetByName("EventSink") == null ) {
+			System.out.println("WorkerInitializer::buildChannel - Erro ao retornar eventSinkViewer !");
 			return false;
 		}
-
-		//Getting Administration Facet
-		LogMonitor logMonitor = LogMonitorHelper.narrow(logMonitorComp.getFacet("scs::demos::logmonitor::LogMonitor"));
-		if( logMonitor == null ) {
-			System.out.println("Erro ao retornar LogMonitor!");
-			return false;
-		}
-		logMonitor.setId(1);
 
 		//Getting Channel Collection Facet from Event Manager Component
 		ChannelCollection chCollection = ChannelCollectionHelper.narrow(eventMgr.getFacet("scs::event_service::ChannelCollection"));
@@ -258,21 +245,14 @@ public class LogMonitorApp {
 		try {
 			//Getting event channel
 			masterChannel = chCollection.getChannel("MasterChannel");
-		
-			//Getting Event Channel Facet and Receptacle
-			EventSink eventSink = EventSinkHelper.narrow(masterChannel.getFacetByName("EventSink"));
-		
-			//Connecting EventSink Facet, from Event Channel, to Log Monitor Receptacle
+			IReceptacles eventSource = IReceptaclesHelper.narrow(masterChannel.getFacet("scs::core::IReceptacles"));
+
+			//Connecting log viewer with event channel
 			try {
-				info1.connect("LogMonitor", eventSink);
-			} catch (InvalidName e) {
-				e.printStackTrace();
-			} catch (InvalidConnection e) {
-				e.printStackTrace();
-			} catch (AlreadyConnected e) {
-				e.printStackTrace();
-			} catch (ExceededConnectionLimit e) {
-				e.printStackTrace();
+				eventSource.connect("EventSource", eventSinkViewer);
+			} catch (Exception e) {
+				System.out.println("WorkerInitializer::buildChannel - Erro ao conectar source no sink." + e.getMessage());
+				return false;
 			}
 
 		} catch (Exception e) {
@@ -280,7 +260,6 @@ public class LogMonitorApp {
 			return false;
 		}
 
-	
 		return true;
 	}
 
@@ -289,30 +268,26 @@ public class LogMonitorApp {
 		String arg;
 		String ecHostname = "localhost";
 		String ecPort = "1050";
-		String lmHostname = "localhost";
-		String lmPort = "1050";
-		String logfile = "/tmp/foo.txt";
-		Integer interval = 10000;
+		String lvHostname = "localhost";
+		String lvPort = "1050";
+		String logfile = "saida.txt";
 
 		InputStreamReader isr = new InputStreamReader ( System.in );
 		BufferedReader br = new BufferedReader ( isr );
-		
-		Getopt g = new Getopt("LogMonitorApp", args, "e:i:l:p:q:o:t:h");
+
+		Getopt g = new Getopt("LogViewerApp", args, "e:l:p:q:o:h");
 
 		while ((c = g.getopt()) != -1)
 		{
 			switch(c)
 			{
-				case 't':
-					arg = g.getOptarg();
-					interval = arg != null ? Integer.parseInt(arg)*1000 : 10000;
 				case 'e':
 					arg = g.getOptarg();		            
 					ecHostname = arg != null ? arg : "localhost";
 					break;
 				case 'l':
 					arg = g.getOptarg();		            
-					lmHostname = arg != null ? arg : "localhost";
+					lvHostname = arg != null ? arg : "localhost";
 					break;
 				case 'p':
 					arg = g.getOptarg();		            
@@ -320,21 +295,20 @@ public class LogMonitorApp {
 					break;
 				case 'q':
 					arg = g.getOptarg();		            
-					lmPort = arg != null ? arg : "1050";
+					lvPort = arg != null ? arg : "1050";
 					break;
-				case 'i':
+				case 'o':
 					arg = g.getOptarg();		            
-					logfile = arg != null ? arg : "/tmp/foo.log";
+					logfile = arg != null ? arg : "saida.txt";
 					break;
 				case 'h':
 				case '?':
-					System.out.println("Uso: LogMonitorApp [-e hostname] [-p porta] [-l hostname] [-q porta] [-i pathname] [-t interval] [-h]");
+					System.out.println("Uso: LogViewerApp [-e hostname] [-p porta] [-l hostname] [-q porta] [-o pathname] [-h]");
 					System.out.println("\t-e <hostname>\t\tHostname do Execution Node para o Event Channel (default = localhost)");
 					System.out.println("\t-p <hostname>\t\tPorta do Execution Node para o Event Channel (default = 1050)");
-					System.out.println("\t-l <hostname>\t\tHostname do Execution Node para o LogMonitor (default = localhost)");
-					System.out.println("\t-q <hostname>\t\tPorta do Execution Node para o LogMonitor (default = 1050)");
-					System.out.println("\t-i <pathname>\t\tNome do path para arquivo de entrada de log (default = /tmp/foo.log)");
-					System.out.println("\t-t <interval>\t\tIntervalo de tempo (segundos) para monitoração do arquivo de log (default = 10)");
+					System.out.println("\t-l <hostname>\t\tHostname do Execution Node para o LogViewer (default = localhost)");
+					System.out.println("\t-q <hostname>\t\tPorta do Execution Node para o LogViewer (default = 1050)");
+					System.out.println("\t-o <pathname>\t\tNome do path para arquivo de saída de log (default = saida.txt)");
 					System.out.println("\t-h\t\t\tEssa tela de ajuda. :)");
 					System.exit(1);
 				break;
@@ -343,26 +317,23 @@ public class LogMonitorApp {
 		}
 
 	 	System.out.println("Execution Node para o Event Channel: " + ecHostname + ":" + ecPort);
-	 	System.out.println("Execution Node para o LogMonitor: " + lmHostname + ":" + lmPort);
-		System.out.println("Arquivo de entrada de log: " + logfile);
-		System.out.println("Intervalo de monitoramento do log: " + interval/1000 + "s");
+	 	System.out.println("Execution Node para o LogViewer: " + lvHostname + ":" + lvPort);
+		System.out.println("Arquivo de saída de log: " + logfile);
 
 		try {
-			File file = new File(logfile);
-			if( !(file.exists() & file.canRead()) ) {
-				System.out.println("Erro lendo arquivo de log: " + logfile);
-				System.exit(1);
-			}
-
 			long start = System.currentTimeMillis();
+			LogViewerApp app = new LogViewerApp(ecHostname, ecPort, lvHostname, lvPort);
 
-			LogMonitorApp app = new LogMonitorApp(ecHostname, ecPort, lmHostname, lmPort);
-			app.run(logfile, interval);
+			app.run(logfile);
+
+			System.out.print("Press any key to stop monitoring ... ");
+			br.readLine();
 
 			long end = System.currentTimeMillis();
+			
 			System.out.println("Tempo total de execucao:" + (end - start));
+			
 			app.stop();
-
 		} catch (SystemException ex) {
 			ex.printStackTrace();
 		} catch (Exception ex) {
@@ -371,27 +342,17 @@ public class LogMonitorApp {
 
 	}
 
-	public void run(String logfile, Integer interval ) throws InterruptedException {
-		//Retrieving Log Monitor Facet
-		LogMonitor log = LogMonitorHelper.narrow(logMonitorComp.getFacetByName("LogMonitor"));
-		
+	public void run(String logfile) throws InterruptedException {
+		//Retrieving LogViewer Facet
+		LogViewer viewer = LogViewerHelper.narrow(logViewerComp.getFacet("scs::demos::logmonitor::LogViewer"));
 		//Setting log file path, passed via arguments
-		log.setLogFile(logfile);
-		log.setMonitorInterval(interval);
-		
-		//Publish log into event channel
-		log.publishLog();
+		viewer.setLogFile(logfile);
+
 	}
 
 	public void stop() {
 		try{
-			//Retrieving Log Monitor Facet
-			LogMonitor log = LogMonitorHelper.narrow(logMonitorComp.getFacetByName("LogMonitor"));
-			
-			//Stop tail and close tailed file
-			log.setTailing(false);
-			
-			execNode[1].stopContainer(LM_CONTAINER_NAME); 
+			execNode[1].stopContainer(LV_CONTAINER_NAME); 
 			Thread.sleep(1000);
 		} catch (Exception e ) {
 			System.err.println("Erro ao finalizar container");

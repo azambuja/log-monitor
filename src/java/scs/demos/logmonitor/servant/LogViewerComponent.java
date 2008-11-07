@@ -1,4 +1,5 @@
 package scs.demos.logmonitor.servant;
+
 import java.util.ArrayList;
 import org.omg.PortableServer.POAPackage.ServantNotActive;
 import org.omg.PortableServer.POAPackage.WrongPolicy;
@@ -12,14 +13,15 @@ import scs.demos.logmonitor.LogViewer;
 import scs.demos.logmonitor.LogViewerHelper;
 
 public class LogViewerComponent extends IComponentServant {
+	private LogViewerServant logViewerServant = null;
+	private LogViewer logViewer = null;
+	private EventSinkViewerServant eventSinkViewerServant = null;
+	private EventSink eventSinkViewer = null;
+
 	private final static String IFACE_EVENTSINKVIEWER = "scs::demos::logmonitor::EventSink";
 	private final static String FACET_EVENTSINKVIEWER = "EventSink";
 	private final static String IFACE_LOGVIEWER = "scs::demos::logmonitor::LogViewer";
 	private final static String FACET_LOGVIEWER = "LogViewer";
-	private EventSinkViewerServant eventSinkViewerServant = null;
-	private EventSink eventSinkViewer = null;
-	private LogViewerServant logViewerServant = null;
-	private LogViewer logViewer = null;
 
 	@Override
 	protected ArrayList<FacetDescription> createFacets() {
@@ -58,8 +60,7 @@ public class LogViewerComponent extends IComponentServant {
 		if (this.logViewer == null) {
 			try {
 				this.logViewerServant = new LogViewerServant(this);
-				this.logViewer = LogViewerHelper.narrow(this._poa()
-					.servant_to_reference(this.logViewerServant));
+				this.logViewer = LogViewerHelper.narrow(this._poa().servant_to_reference(this.logViewerServant));
 			} catch (ServantNotActive e) {
 				e.printStackTrace();
 			} catch (WrongPolicy e) {

@@ -7,8 +7,8 @@ import scs.demos.logmonitor.LogViewerPOA;
 import org.omg.CORBA.Any;
 
 public class LogViewerServant extends LogViewerPOA {
-
 	private int identifier;
+	private String logfile;
 	private LogViewerComponent logviewer = null;
 	private int logViewerCount; 
 
@@ -22,6 +22,14 @@ public class LogViewerServant extends LogViewerPOA {
 
 	public int getId(){
 		return identifier;
+	}
+	
+	public void setLogFile(String logfile){
+		this.logfile = logfile;
+	}
+
+	public String getLogFile(){
+		return this.logfile;
 	}
 }
 
